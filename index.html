@@ -1,0 +1,2380 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>امتحان الدراسات الاجتماعية (هذا وطني) - الصف الحادي عشر</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=El+Messiri:wght@400;500;600;700&family=Reem+Kufi:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --main-gold: #D4AF37;
+            --main-green: #0A5F38;
+            --main-blue: #1E3A8A;
+            --main-dark: #1A1A1A;
+            --definition-color: #8B4513;
+            --importance-color: #228B22;
+            --types-color: #4B0082;
+            --values-color: #00008B;
+            --islamic-color: #006400;
+            --prophet-color: #8B0000;
+            --values-color-1: #8B008B;
+            --values-color-2: #2E8B57;
+            --progress-start: #0A5F38;
+            --progress-middle: #D4AF37;
+            --progress-end: #8B0000;
+            --transition: all 0.3s ease;
+            --correct-color: #2E8B57;
+            --incorrect-color: #8B0000;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background-color: var(--main-dark);
+            color: #FFF;
+            font-family: 'Amiri', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            padding: 0;
+            background-image: 
+                linear-gradient(rgba(26, 26, 26, 0.95), rgba(26, 26, 26, 0.95));
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+        
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 5s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 50px rgba(212, 175, 55, 0.5); }
+            50% { box-shadow: 0 0 60px rgba(212, 175, 55, 0.8); }
+            100% { box-shadow: 0 0 50px rgba(212, 175, 55, 0.5); }
+        }
+        
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px rgba(212, 175, 55, 0.5); }
+            100% { text-shadow: 0 0 25px rgba(212, 175, 55, 0.9), 0 0 40px rgba(212, 175, 55, 0.6); }
+        }
+        
+        @keyframes valuesGlow {
+            0% { text-shadow: 0 0 10px rgba(139, 0, 139, 0.7); }
+            100% { text-shadow: 0 0 20px rgba(139, 0, 139, 0.9), 0 0 30px rgba(212, 175, 55, 0.6); }
+        }
+        
+        @keyframes lessonAppear {
+            0% {
+                opacity: 0;
+                transform: translateY(50px) scale(0.95);
+                filter: blur(5px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--main-gold);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--values-color-1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 60px 0;
+            border-bottom: 2px solid var(--main-gold);
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, rgba(10, 95, 56, 0.2), rgba(139, 0, 139, 0.2));
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><rect fill="%23000" width="100" height="100"/><path fill="%23D4AF37" fill-opacity="0.05" d="M0 0h100v100H0z"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            z-index: -1;
+        }
+        
+        h1 {
+            color: var(--main-gold);
+            font-size: 2.8rem;
+            margin: 0;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.7);
+            animation: glow 3s infinite alternate;
+            font-weight: 700;
+            letter-spacing: 2px;
+            position: relative;
+            padding-bottom: 15px;
+            font-family: 'El Messiri', sans-serif;
+        }
+        
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 30%;
+            right: 30%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--main-gold), transparent);
+        }
+        
+        header p {
+            font-size: 1.3rem;
+            margin-top: 15px;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-family: 'Reem Kufi', sans-serif;
+        }
+        
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 10000;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--progress-start), var(--progress-middle), var(--progress-end));
+            width: 0%;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px rgba(10, 95, 56, 0.7);
+            border-radius: 0 3px 3px 0;
+        }
+        
+        .exam-section {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.8));
+            border: 1px solid var(--main-gold);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            /* إزالة opacity الابتدائية لجعل الأقسام مرئية */
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .exam-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><rect fill="%23000" width="100" height="100"/><path fill="%23D4AF37" fill-opacity="0.03" d="M0 0h100v100H0z"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            z-index: -1;
+        }
+        
+        .section-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .section-title {
+            color: var(--main-gold);
+            border-bottom: 2px solid;
+            padding-bottom: 15px;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            font-size: 2rem;
+            margin-bottom: 25px;
+            position: relative;
+            font-family: 'El Messiri', sans-serif;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+        
+        .section-title::before {
+            content: "";
+            margin-left: 15px;
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            font-size: 1.8rem;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--main-gold), transparent);
+            border-radius: 2px;
+        }
+        
+        .question-card {
+            background: linear-gradient(to right, rgba(139, 69, 19, 0.2), rgba(139, 69, 19, 0.1));
+            border: 1px solid var(--definition-color);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+        
+        .question-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+        
+        .question-number {
+            background: var(--main-gold);
+            color: var(--main-dark);
+            font-weight: bold;
+            padding: 8px 20px;
+            border-radius: 20px;
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            font-size: 1.1rem;
+            z-index: 1;
+        }
+        
+        .question-text {
+            font-size: 1.2rem;
+            margin: 15px 0 25px 0;
+            padding-right: 10px;
+            line-height: 1.9;
+        }
+        
+        .options-container {
+            margin: 20px 0;
+            padding-right: 10px;
+        }
+        
+        .option {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 12px 0;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+        
+        .option:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(-5px);
+        }
+        
+        .option.selected {
+            background: rgba(212, 175, 55, 0.2);
+            border-color: var(--main-gold);
+        }
+        
+        .option.correct {
+            background: rgba(46, 139, 87, 0.3);
+            border-color: var(--correct-color);
+        }
+        
+        .option.incorrect {
+            background: rgba(139, 0, 0, 0.3);
+            border-color: var(--incorrect-color);
+        }
+        
+        .option-letter {
+            background: var(--main-gold);
+            color: var(--main-dark);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 15px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        
+        .option-text {
+            font-size: 1.1rem;
+        }
+        
+        .image-container {
+            text-align: center;
+            margin: 25px 0;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .exam-image {
+            max-width: 100%;
+            max-height: 400px;
+            border-radius: 8px;
+            border: 2px solid var(--main-gold);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .map-image {
+            max-width: 90%;
+            max-height: 500px;
+            border-radius: 8px;
+            border: 2px solid var(--main-gold);
+        }
+        
+        .image-caption {
+            margin-top: 10px;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .exam-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .exam-table th, .exam-table td {
+            padding: 14px 16px;
+            text-align: right;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .exam-table th {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--main-gold);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .exam-table tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .answer-input {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            color: white;
+            font-size: 1.1rem;
+            font-family: 'Amiri', serif;
+            margin: 10px 0;
+            transition: var(--transition);
+        }
+        
+        .answer-input:focus {
+            outline: none;
+            border-color: var(--main-gold);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+        
+        .answer-input.correct {
+            border-color: var(--correct-color);
+            background: rgba(46, 139, 87, 0.1);
+        }
+        
+        .answer-input.incorrect {
+            border-color: var(--incorrect-color);
+            background: rgba(139, 0, 0, 0.1);
+        }
+        
+        .essay-question {
+            background: linear-gradient(to right, rgba(0, 0, 139, 0.2), rgba(0, 0, 139, 0.1));
+            border: 1px solid var(--values-color);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+        
+        .essay-answer {
+            width: 100%;
+            min-height: 120px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            color: white;
+            font-size: 1.1rem;
+            font-family: 'Amiri', serif;
+            margin: 15px 0;
+            resize: vertical;
+            transition: var(--transition);
+        }
+        
+        .essay-answer:focus {
+            outline: none;
+            border-color: var(--main-gold);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+        
+        .points-list {
+            margin: 15px 0;
+            padding-right: 25px;
+        }
+        
+        .points-list li {
+            margin: 10px 0;
+            padding-right: 10px;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin: 35px 0 20px 0;
+        }
+        
+        .nav-btn {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.4), rgba(139, 0, 139, 0.4));
+            color: white;
+            border: 1px solid var(--main-gold);
+            padding: 14px 28px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            font-family: 'El Messiri', sans-serif;
+            font-size: 1.1rem;
+        }
+        
+        .nav-btn:hover {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.6), rgba(139, 0, 139, 0.6));
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .nav-btn i {
+            margin: 0 8px;
+        }
+        
+        .control-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 35px 0;
+            flex-wrap: wrap;
+        }
+        
+        .control-btn {
+            background: linear-gradient(135deg, var(--main-gold), var(--values-color-1));
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            font-family: 'El Messiri', sans-serif;
+        }
+        
+        .control-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .control-btn.secondary {
+            background: linear-gradient(135deg, var(--main-green), var(--main-blue));
+        }
+        
+        .results-container {
+            background: linear-gradient(135deg, rgba(10, 95, 56, 0.3), rgba(30, 58, 138, 0.3));
+            border: 2px solid var(--main-gold);
+            border-radius: 15px;
+            padding: 35px;
+            margin: 40px 0;
+            text-align: center;
+            display: none;
+        }
+        
+        .results-title {
+            color: var(--main-gold);
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            font-family: 'El Messiri', sans-serif;
+        }
+        
+        .score-display {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: var(--main-gold);
+            margin: 25px 0;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.7);
+        }
+        
+        .score-details {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 35px 0;
+            gap: 15px;
+        }
+        
+        .score-item {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 10px;
+            flex: 1;
+            min-width: 220px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .score-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--main-gold);
+            margin: 10px 0;
+        }
+        
+        .score-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.2rem;
+        }
+        
+        .menu-toggle {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.9);
+            color: var(--main-gold);
+            border: 2px solid var(--main-gold);
+            border-radius: 50%;
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10000;
+            font-size: 1.6rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+        
+        .menu-toggle:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .exam-menu {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.95);
+            border: 2px solid var(--main-gold);
+            border-radius: 12px;
+            padding: 20px;
+            z-index: 9999;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            width: 300px;
+            transition: var(--transition);
+            display: none;
+        }
+        
+        .exam-menu h3 {
+            color: var(--main-gold);
+            margin-top: 0;
+            text-align: center;
+            border-bottom: 2px solid var(--main-gold);
+            padding-bottom: 12px;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            font-family: 'El Messiri', sans-serif;
+        }
+        
+        .exam-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .exam-menu li {
+            margin: 10px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding-bottom: 10px;
+        }
+        
+        .exam-menu li:last-child {
+            border-bottom: none;
+        }
+        
+        .exam-menu a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px 15px;
+            border-radius: 6px;
+            transition: var(--transition);
+            font-size: 1rem;
+            font-family: 'Reem Kufi', sans-serif;
+        }
+        
+        .exam-menu a:hover {
+            background: rgba(212, 175, 55, 0.2);
+            transform: translateX(-5px);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 45px 0;
+            margin-top: 60px;
+            border-top: 1px solid var(--main-gold);
+            color: var(--main-gold);
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding: 25px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 12px;
+            font-size: 1.1rem;
+            color: var(--main-gold);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            line-height: 1.8;
+        }
+        
+        .golden-text {
+            color: #D4AF37;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.7);
+            animation: glow 3s infinite alternate;
+        }
+        
+        .light-glow {
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3), 0 0 30px rgba(212, 175, 55, 0.2);
+            transition: box-shadow 0.5s ease;
+        }
+        
+        .section-glow {
+            position: relative;
+        }
+        
+        .section-glow::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.1);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+        
+        .section-glow:hover::after {
+            opacity: 1;
+        }
+        
+        .section-appear {
+            animation: lessonAppear 1.5s ease-out forwards;
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .exam-section { padding: 20px; }
+            .section-title { font-size: 1.7rem; }
+            header { padding: 40px 0; }
+            .control-buttons { flex-direction: column; }
+            .nav-btn { padding: 12px 20px; font-size: 1rem; }
+            .exam-menu { width: 280px; }
+            .question-card { padding: 20px; }
+            .option { padding: 12px; }
+            .score-item { min-width: 100%; }
+        }
+        
+        .hint-box {
+            background: linear-gradient(to right, rgba(75, 0, 130, 0.2), rgba(75, 0, 130, 0.1));
+            border: 1px solid var(--types-color);
+            border-radius: 8px;
+            padding: 18px;
+            margin: 18px 0;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .hint-title {
+            color: var(--types-color);
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .model-answer {
+            background: linear-gradient(to right, rgba(34, 139, 34, 0.2), rgba(34, 139, 34, 0.1));
+            border: 1px solid var(--importance-color);
+            border-radius: 8px;
+            padding: 18px;
+            margin: 18px 0;
+            display: none;
+        }
+        
+        .model-answer-title {
+            color: var(--importance-color);
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .toggle-answer-btn {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--main-gold);
+            border: 1px solid var(--main-gold);
+            border-radius: 6px;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 12px;
+            transition: var(--transition);
+            font-family: 'El Messiri', sans-serif;
+        }
+        
+        .toggle-answer-btn:hover {
+            background: rgba(212, 175, 55, 0.4);
+        }
+        
+        .question-part {
+            margin: 20px 0;
+            padding-right: 15px;
+        }
+        
+        .question-part-title {
+            color: var(--main-gold);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-family: 'El Messiri', sans-serif;
+            border-right: 3px solid var(--main-gold);
+            padding-right: 10px;
+        }
+        
+        .inline-input {
+            display: inline-block;
+            width: auto;
+            min-width: 100px;
+            margin: 0 8px;
+            padding: 8px 12px;
+            text-align: center;
+        }
+        
+        .comparison-row {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+        
+        .comparison-label {
+            font-weight: bold;
+            color: var(--main-gold);
+            min-width: 150px;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="starsContainer"></div>
+    
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div class="menu-toggle light-glow" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </div>
+    
+    <div class="exam-menu light-glow" id="examMenu">
+        <h3 class="golden-text">قائمة أسئلة الامتحان</h3>
+        <ul>
+            <li><a href="#instructions"><i class="fas fa-info-circle"></i> تعليمات الامتحان</a></li>
+            <li><a href="#question1"><i class="fas fa-question-circle"></i> السؤال الأول: اختر الإجابة الصحيحة (12 فقرة)</a></li>
+            <li><a href="#question2"><i class="fas fa-question-circle"></i> السؤال الثاني: المصطلحات والنتائج</a></li>
+            <li><a href="#question3"><i class="fas fa-question-circle"></i> السؤال الثالث: النصوص والخرائط</a></li>
+            <li><a href="#question4"><i class="fas fa-question-circle"></i> السؤال الرابع: التقسيم الإداري والمقارنة</a></li>
+            <li><a href="#question5"><i class="fas fa-question-circle"></i> السؤال الخامس: الاكتشافات والخرائط</a></li>
+            <li><a href="#results"><i class="fas fa-chart-bar"></i> عرض النتائج</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <header class="floating">
+            <h1 class="golden-text">امتحان الدراسات الاجتماعية (هذا وطني) <i class="fas fa-book-open"></i></h1>
+            <p>الصف: الحادي عشر - الدور الأول - الفصل الدراسي الأول - العام الدراسي 2023/2024</p>
+            <p>المادة: الدراسات الاجتماعية (هذا وطني)</p>
+            <p style="margin-top: 20px; font-size: 1.1rem; color: var(--main-gold);">أجب عن جميع الأسئلة الآتية</p>
+        </header>
+
+        <!-- تعليمات الامتحان -->
+        <div class="exam-section section-glow light-glow" id="instructions">
+            <h2 class="section-title golden-text">تعليمات الامتحان <i class="fas fa-info-circle"></i></h2>
+            
+            <div class="question-card">
+                <div class="question-text">
+                    <p>أهلاً بك في امتحان الدراسات الاجتماعية (هذا وطني) للصف الحادي عشر. يرجى اتباع التعليمات التالية:</p>
+                    <ul class="points-list">
+                        <li>يقسم الامتحان إلى 5 أسئلة رئيسية.</li>
+                        <li><strong>السؤال الأول:</strong> أسئلة الاختيار من متعدد (12 فقرة).</li>
+                        <li><strong>السؤال الثاني:</strong> مصطلحات ونتائج وإكمال.</li>
+                        <li><strong>السؤال الثالث:</strong> فهم النصوص وتحليل الخرائط والجداول.</li>
+                        <li><strong>السؤال الرابع:</strong> التقسيم الإداري والمقارنة والترتيب.</li>
+                        <li><strong>السؤال الخامس:</strong> تحليل الصور والخرائط والتعليل.</li>
+                        <li>يمكنك التنقل بين الأسئلة باستخدام قائمة التنقل على اليمين (زر ☰).</li>
+                        <li>سيتم حفظ إجاباتك تلقائياً حتى لا تفقدها.</li>
+                        <li>بعد الانتهاء، اضغط على زر "تصحيح الإجابات" للحصول على نتيجتك.</li>
+                        <li>للأسئلة المقالية، يمكنك عرض نموذج الإجابة بالضغط على الزر المخصص لذلك.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="control-buttons">
+                <button class="control-btn" onclick="startExam()">
+                    <i class="fas fa-play"></i> بدء الامتحان
+                </button>
+            </div>
+        </div>
+
+        <!-- السؤال الأول: اختر الإجابة الصحيحة -->
+        <div class="exam-section section-glow light-glow" id="question1">
+            <h2 class="section-title golden-text">السؤال الأول: اختر الإجابة الصحيحة <i class="fas fa-check-circle"></i></h2>
+            <p class="question-text">ضع دائرة حول رمز الإجابة الصحيحة لكل مفردة من المفردات الآتية:</p>
+            
+            <!-- السؤال 1 -->
+            <div class="question-card">
+                <div class="question-number">1</div>
+                <div class="question-text">المحافظة الثمانية التي تأتي في المرتبة الأولى من حيث عدد الكهوف:</div>
+                <div class="options-container">
+                    <div class="option" onclick="selectOption(this, 'q1')">
+                        <div class="option-letter">أ</div>
+                        <div class="option-text">الداخلية</div>
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'q1')">
+                        <div class="option-letter">ب</div>
+                        <div class="option-text">ظفار</div>
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'q1')">
+                        <div class="option-letter">ج</div>
+                        <div class="option-text">الظاهرة</div>
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'q1')">
+                        <div class="option-letter">د</div>
+                        <div class="option-text">الوسطى</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- السؤال 2 -->
+            <div class="question-card">
+                <div class="question-number">2</div>
+                <div class="question-text">الجدول الصحيح لتصنيف مظاهر السطح في سلطنة عمان:</div>
+                <div class="table-container">
+                    <table class="exam-table">
+                        <thead>
+                            <tr>
+                                <th>مظاهر السطح</th>
+                                <th>أمثلة عليها</th>
+                                <th>أمثلة عليها</th>
+                                <th>الموقع</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>الواحات</td>
+                                <td>مسفاة العبرين</td>
+                                <td>طفار</td>
+                                <td>الرسمي</td>
+                            </tr>
+                            <tr>
+                                <td>الكهوف</td>
+                                <td>أم السميم</td>
+                                <td>الداخلية</td>
+                                <td>السبكات</td>
+                            </tr>
+                            <tr>
+                                <td>السبكات</td>
+                                <td>المرنيف</td>
+                                <td>الرسمي</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="question-text" style="margin-top: 20px;">هل الجدول أعلاه صحيح أم به أخطاء؟</div>
+                <div class="options-container">
+                    <div class="option" onclick="selectOption(this, 'q2')">
+                        <div class="option-letter">أ</div>
+                        <div class="option-text">الجدول صحيح</div>
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'q2')">
+                        <div class="option-letter">ب</div>
+                        <div class="option-text">الجدول به أخطاء</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- السؤال 3 -->
+            <div class="question-card">
+                <div class="question-number">3</div>
+                <div class="question-text">أبرز معالم السياحة الجيولوجية في المحافظة المشار إليها بالرمز ▲ في الخريطة المقابلة:</div>
+                <div class="image-container">
+                    <img src="https://k.top4top.io/p_3647e0r911.jpg" alt="خريطة سلطنة عمان" class="map-image">
+                    <p class="image-caption">خريطة سلطنة عمان توضح المحافظات</p>
+                </div>
+                <div class="options-container">
+                    <div class="option" onclick="selectOption(this, 'q3')">
+                        <div class="option-letter">أ</div>
+                        <div class="option-text">صخور الأفيوليت</div>
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'q3')">
+                        <div class="option-letter">ب</div>
+                        <div class="option-text">حديقة الصخور</div>
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'q3')">
+                        <div class="option-letter">ج</div>
+                        <div class="option-text">جبال القرا</div>
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'q3')">
+                        <div class="option-letter">د</div>
+                        <div class="option-text">كيف الهوته</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- السؤال 4 -->
+            <div class="question-card">
+                <div class="question-number">4</div>
+                <div class="question-text">المحمية الطبيعية التي توجد في ولاية الكامل والوافي:</div>
+                <div class="options-container">
+                    <div class="option" onclick="selectOption(this, 'q4')">
+                        <div class="option-letter">أ</div>
+                        <div class="option-text">جبل سمحان</div>
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'q4')">
+                        <div class="option-letter">ب</div>
+                        <div class="option-text">السرين الطبيعية</div>
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'q4')">
+                        <div class="option-letter">ج</div>
+                        <div class="option-text">جد الحراسيس</div>
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'q4')">
+                        <div class="option-letter">د</div>
+                        <div class="option-text">السليل الطبيعية</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- السؤال 5 -->
+            <div class="question-card">
+                <div class="question-number">5</div>
+                <div class="question-text">المجال الذي ينسب إليه الكتاب في الصورة المقابلة:</div>
+                <div class="image-container">
+                    <img src="https://a.top4top.io/p_3647riqel2.jpg" alt="صورة كتاب قديم" class="exam-image">
+                </div>
+                <div class="options-container">
+                    <div class="option" onclick="selectOption(this, 'q5')">
+                        <div class="option-letter">أ</div>
+                        <div class="option-text">الفلك</div>
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'q5')">
+                        <div class="option-letter">ب</div>
+                        <div class="option-text">الأدب</div>
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'q5')">
+                        <div class="option-letter">ج</div>
+                        <div class="option-text">التاريخ</div>
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'q5')">
+                        <div class="option-letter">د</div>
+                        <div class="option-text">الطب</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- السؤال 6 -->
+            <div class="question-card">
+                <div class="question-number">6</div>
+                <div class="question-text">نوع المناخ السائد في المحافظة المشار إليها بالرمز على الخريطة المجاورة:</div>
+                <div class="image-container">
+                    <img src="https://b.top4top.io/p_3647l9epb3.jpg" alt="خريطة سلطنة عمان" class="map-image">
+                </div>
+                <div class="options-container">
+                    <div class="option" onclick="selectOption(this, 'q6')">
+                        <div class="option-letter">أ</div>
+                        <div class="option-text">الموسمي</div>
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'q6')">
+                        <div class="option-letter">ب</div>
+                        <div class="option-text">البحر المتوسط</div>
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'q6')">
+                        <div class="option-letter">ج</div>
+                        <div class="option-text">الصحراوي الجاف</div>
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'q6')">
+                        <div class="option-letter">د</div>
+                        <div class="option-text">شبه الصحراوي</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- السؤال 7 -->
+            <div class="question-card">
+                <div class="question-number">7</div>
+                <div class="question-text">المخطط الصحيح الذي يمثل مرتكزات المجتمع العماني:</div>
+                <div class="options-container">
+                    <div class="option" onclick="selectOption(this, 'q7')">
+                        <div class="option-letter">أ</div>
+                        <div class="option-text">المرتكز الديني، المرتكز الاجتماعي، المرتكز الاقتصادي</div>
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'q7')">
+                        <div class="option-letter">ب</div>
+                        <div class="option-text">المرتكز الثقافي، المرتكز السياسي، المرتكز البيئي</div>
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'q7')">
+                        <div class="option-letter">ج</div>
+                        <div class="option-text">المرتكز التاريخي، المرتكز الجغرافي، المرتكز الحضاري</div>
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'q7')">
+                        <div class="option-letter">د</div>
+                        <div class="option-text">سيرة الجميع العملي، مصدر القيم والقوانين، رمز الوحدة الوطنية، تنظيم المجتمع والمشاركة</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- السؤال 8 -->
+            <div class="question-card">
+                <div class="question-number">8</div>
+                <div class="question-text">مشكلة الغطاء النباتي الطبيعي التي توضحها الصورة المقابلة:</div>
+                <div class="image-container">
+                    <img src="https://c.top4top.io/p_36476tslv4.jpg" alt="صورة مشكلة الغطاء النباتي" class="exam-image">
+                </div>
+                <div class="options-container">
+                    <div class="option" onclick="selectOption(this, 'q8')">
+                        <div class="option-letter">أ</div>
+                        <div class="option-text">التوسع العمراني</div>
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'q8')">
+                        <div class="option-letter">ب</div>
+                        <div class="option-text">الجفاف وقلة الأمطار</div>
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'q8')">
+                        <div class="option-letter">ج</div>
+                        <div class="option-text">انتشار الرعي الجائر</div>
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'q8')">
+                        <div class="option-letter">د</div>
+                        <div class="option-text">قطع الأشجار</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- السؤال 9 -->
+            <div class="question-card">
+                <div class="question-number">9</div>
+                <div class="question-text">عدد مجلدات موسوعة بيان الشرع للعلامة محمد بن أحمد الكندي:</div>
+                <div class="options-container">
+                    <div class="option" onclick="selectOption(this, 'q9')">
+                        <div class="option-letter">أ</div>
+                        <div class="option-text">12 مجلد</div>
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'q9')">
+                        <div class="option-letter">ب</div>
+                        <div class="option-text">22 مجلد</div>
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'q9')">
+                        <div class="option-letter">ج</div>
+                        <div class="option-text">52 مجلد</div>
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'q9')">
+                        <div class="option-letter">د</div>
+                        <div class="option-text">72 مجلد</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- السؤال 10 -->
+            <div class="question-card">
+                <div class="question-number">10</div>
+                <div class="question-text">القبيلة العمانية التي استوطن بعض أفرادها مصر بعد استقرار الأمن ودخول أهلها الإسلام:</div>
+                <div class="options-container">
+                    <div class="option" onclick="selectOption(this, 'q10')">
+                        <div class="option-letter">أ</div>
+                        <div class="option-text">الأزد</div>
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'q10')">
+                        <div class="option-letter">ب</div>
+                        <div class="option-text">آل الجلندي</div>
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'q10')">
+                        <div class="option-letter">ج</div>
+                        <div class="option-text">ثمالة</div>
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'q10')">
+                        <div class="option-letter">د</div>
+                        <div class="option-text">المهرة</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- السؤال 11 -->
+            <div class="question-card">
+                <div class="question-number">11</div>
+                <div class="question-text">المسطرة الزمنية الصحيحة لإنشاء بعض المؤسسات الثقافية العمانية:</div>
+                <div class="options-container">
+                    <div class="option" onclick="selectOption(this, 'q11')">
+                        <div class="option-letter">أ</div>
+                        <div class="option-text">مكتبة السيد محمد بن أحمد البوسعيدي (1972) → متحف التاريخ الطبيعي (1983) → مكتبة الجامعة (1986)</div>
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'q11')">
+                        <div class="option-letter">ب</div>
+                        <div class="option-text">متحف التاريخ الطبيعي (1974) → مكتبة السيد محمد بن أحمد البوسعيدي (1980) → مكتبة الجامعة (1985)</div>
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'q11')">
+                        <div class="option-letter">ج</div>
+                        <div class="option-text">مكتبة الجامعة (1970) → مكتبة السيد محمد بن أحمد البوسعيدي (1978) → متحف التاريخ الطبيعي (1985)</div>
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'q11')">
+                        <div class="option-letter">د</div>
+                        <div class="option-text">متحف التاريخ الطبيعي (1985) → مكتبة السيد محمد بن أحمد البوسعيدي (1990) → مكتبة الجامعة (1995)</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- السؤال 12 -->
+            <div class="question-card">
+                <div class="question-number">12</div>
+                <div class="question-text">المؤسسة الثقافية العمانية التي تمثلها الصورة المقابلة:</div>
+                <div class="image-container">
+                    <img src="https://d.top4top.io/p_36475yziv5.jpg" alt="صورة مؤسسة ثقافية" class="exam-image">
+                </div>
+                <div class="options-container">
+                    <div class="option" onclick="selectOption(this, 'q12')">
+                        <div class="option-letter">أ</div>
+                        <div class="option-text">المدارس</div>
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'q12')">
+                        <div class="option-letter">ب</div>
+                        <div class="option-text">المساجد</div>
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'q12')">
+                        <div class="option-letter">ج</div>
+                        <div class="option-text">المكتبات</div>
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'q12')">
+                        <div class="option-letter">د</div>
+                        <div class="option-text">الجامعات</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="navigation">
+                <button class="nav-btn" onclick="scrollToSection('instructions')"><i class="fas fa-arrow-right"></i> السابق: التعليمات</button>
+                <button class="nav-btn" onclick="scrollToSection('question2')">التالي: السؤال الثاني <i class="fas fa-arrow-left"></i></button>
+            </div>
+        </div>
+
+        <!-- السؤال الثاني: المصطلحات والنتائج -->
+        <div class="exam-section section-glow light-glow" id="question2">
+            <h2 class="section-title golden-text">السؤال الثاني: المصطلحات والنتائج <i class="fas fa-pen-nib"></i></h2>
+            
+            <!-- الجزء الأول: كتابة المصطلح -->
+            <div class="question-card">
+                <div class="question-number">أولاً</div>
+                <div class="question-text">اكتب اسم المصطلح/ المفهوم الصحيح أمام العبارات الآتية:</div>
+                
+                <table class="exam-table">
+                    <thead>
+                        <tr>
+                            <th width="10%">م</th>
+                            <th>العبارات</th>
+                            <th width="40%">المصطلح/المفهوم</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>سفن أعدها الإمام الصلت بن مالك لتحرير جزيرة سقطرى.</td>
+                            <td><input type="text" class="answer-input" id="q13" placeholder="أدخل المصطلح هنا"></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>أراضي ملحية منخفضة المنسوب يغطى سطحها رواسب رملية طينية ناعمة وترسيبات ملحية.</td>
+                            <td><input type="text" class="answer-input" id="q14" placeholder="أدخل المصطلح هنا"></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>مشاركة الأفراد في الأعمال التي يقوم بها المجتمع ممثلاً في جهة حكومية أو أهلية بما يحقق مصلحة للمجتمع دون الحصول على منفعة مادية.</td>
+                            <td><input type="text" class="answer-input" id="q15" placeholder="أدخل المصطلح هنا"></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>عبارة عن حواجز توضع على الأسوار أو الأبراج وبها فتحات لإطلاق النار أثناء عملية الدفاع.</td>
+                            <td><input type="text" class="answer-input" id="q16" placeholder="أدخل المصطلح هنا"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- الجزء الثاني: أعط نتيجة واحدة -->
+            <div class="question-card">
+                <div class="question-number">ثانياً</div>
+                <div class="question-text">أعط نتيجة واحدة لكل مما يأتي:</div>
+                
+                <div class="question-part">
+                    <div class="question-part-title">1. وقوع سلطنة عمان ضمن المنطقة المدارية.</div>
+                    <textarea class="essay-answer" id="q17" placeholder="اكتب إجابتك هنا..."></textarea>
+                    <button class="toggle-answer-btn" onclick="toggleModelAnswer('modelAnswer1')">عرض نموذج الإجابة</button>
+                    <div class="model-answer" id="modelAnswer1">
+                        <div class="model-answer-title">نموذج الإجابة:</div>
+                        <p>ارتفاع درجات الحرارة، سيادة الجفاف (يكتفى بواحدة وبما يفيد المعنى).</p>
+                    </div>
+                </div>
+                
+                <div class="question-part">
+                    <div class="question-part-title">2. تفاعل الفرد مع مجتمعه.</div>
+                    <textarea class="essay-answer" id="q18" placeholder="اكتب إجابتك هنا..."></textarea>
+                    <button class="toggle-answer-btn" onclick="toggleModelAnswer('modelAnswer2')">عرض نموذج الإجابة</button>
+                    <div class="model-answer" id="modelAnswer2">
+                        <div class="model-answer-title">نموذج الإجابة:</div>
+                        <p>يشأ الفرد إيجابيا في تفاعله مع مجتمعه، قادرا على العطاء والمساهمة مما يساعد على تقوية روابط المجتمع والمساهمة في بناء الوطن (ما يفيد المعنى).</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- الجزء الثالث: أ. دليل على ما يأتي -->
+            <div class="question-card">
+                <div class="question-number">ثالثاً</div>
+                <div class="question-text">أ. دليل على ما يأتي:</div>
+                
+                <div class="question-part">
+                    <div class="question-part-title">1. الحنكة السياسية التي تمتع بها الملكة العمانية شمساء.</div>
+                    <textarea class="essay-answer" id="q19" placeholder="اكتب إجابتك هنا..."></textarea>
+                    <button class="toggle-answer-btn" onclick="toggleModelAnswer('modelAnswer3')">عرض نموذج الإجابة</button>
+                    <div class="model-answer" id="modelAnswer3">
+                        <div class="model-answer-title">نموذج الإجابة:</div>
+                        <p>إبرام اتفاقية مع الملك سرجون الأكادي ملك سومر وأكاد لصد الأطماع الخارجية المحيطة بعمان.</p>
+                    </div>
+                </div>
+                
+                <div class="question-part">
+                    <div class="question-part-title">2. اهتمام سلطنة عمان بالتعليم العالي.</div>
+                    <textarea class="essay-answer" id="q20" placeholder="اكتب إجابتك هنا..."></textarea>
+                    <button class="toggle-answer-btn" onclick="toggleModelAnswer('modelAnswer4')">عرض نموذج الإجابة</button>
+                    <div class="model-answer" id="modelAnswer4">
+                        <div class="model-answer-title">نموذج الإجابة:</div>
+                        <p>أنشئت العديد من الجامعات والكليات والمعاهد المختلفة المنتشرة في محافظات السلطنة كافة.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- الجزء الثالث: ب. دراسة خريطة -->
+            <div class="question-card">
+                <div class="question-number">ب</div>
+                <div class="question-text">ادرس خريطة سلطنة عمان التي أمامك ثم أجب عن الأسئلة التي تليها:</div>
+                
+                <div class="image-container">
+                    <img src="https://i.postimg.cc/Vky8HKTm/1000001054.jpg" alt="خريطة سلطنة عمان مفصلة" class="map-image">
+                </div>
+                
+                <div class="question-part">
+                    <div class="question-part-title">1. اكتب ما يأتي:</div>
+                    <p>(أ) الرقم الذي يشير إلى المحافظة التي يوجد بها القلج الذي ينسب إلى مالك بن فهم:</p>
+                    <input type="text" class="answer-input" id="q21a" placeholder="أدخل الرقم هنا">
+                    
+                    <p>(ب) العام الميلادي الذي أدرج فيه الموقع الأثري في المحافظة المشار إليها بالرقم (2) في قائمة التراث العالمي:</p>
+                    <input type="text" class="answer-input" id="q21b" placeholder="أدخل العام الميلادي هنا">
+                    
+                    <p>(ج) اسم الصحراء الرملية المشار إليها بالرمز:</p>
+                    <input type="text" class="answer-input" id="q21c" placeholder="أدخل اسم الصحراء هنا">
+                </div>
+                
+                <div class="question-part">
+                    <div class="question-part-title">2. ظلل المحافظة التي يوجد بها أكبر تجمع للجزر.</div>
+                    <textarea class="essay-answer" id="q22" placeholder="اكتب اسم المحافظة هنا..."></textarea>
+                    <button class="toggle-answer-btn" onclick="toggleModelAnswer('modelAnswer5')">عرض نموذج الإجابة</button>
+                    <div class="model-answer" id="modelAnswer5">
+                        <div class="model-answer-title">نموذج الإجابة:</div>
+                        <p>محافظة مسندم.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="navigation">
+                <button class="nav-btn" onclick="scrollToSection('question1')"><i class="fas fa-arrow-right"></i> السابق: السؤال الأول</button>
+                <button class="nav-btn" onclick="scrollToSection('question3')">التالي: السؤال الثالث <i class="fas fa-arrow-left"></i></button>
+            </div>
+        </div>
+
+        <!-- السؤال الثالث: النصوص والخرائط -->
+        <div class="exam-section section-glow light-glow" id="question3">
+            <h2 class="section-title golden-text">السؤال الثالث: النصوص والخرائط <i class="fas fa-map"></i></h2>
+            
+            <!-- الجزء الأول: أ. قراءة النص -->
+            <div class="question-card">
+                <div class="question-number">أولاً - أ</div>
+                <div class="question-text">اقرأ الفقرة الآتية جيداً ثم أجب عن الأسئلة التي تليها:</div>
+                
+                <div class="hint-box">
+                    <p style="font-style: italic; line-height: 2; text-align: justify;">
+                        "يمثل أفيوليت سمائل الجزء الأكبر من أفيوليت عمان، وينتشر في سلاسل جبال شمال عمان، وتعد كتلة صخور الأفيوليت في جبال الحجر هي أكبر مجموعة قاع محيطي في العالم وهي عبارة عن صخور بركانية ظهرت على السطح نتيجة للحركات التكتونية، وتوفر صخور الأفيوليت في عمان مرجعاً جيولوجياً لمعرفة أنواع الصخور التي يتكون منها باطن الأرض، كما اكتشف العلماء قدرتها على امتصاص غاز ثاني أكسيد الكربون المسبب لظاهرة الاحتباس الحراري."
+                    </p>
+                </div>
+                
+                <div class="question-part">
+                    <div class="question-part-title">1- استخرج من النص أهمية تكوينات أفيوليت سمائل في المجالات الآتية:</div>
+                    
+                    <p>أ- الجيولوجيا:</p>
+                    <textarea class="essay-answer" id="q23a" placeholder="اكتب إجابتك هنا..."></textarea>
+                    
+                    <p>ب- البيئة:</p>
+                    <textarea class="essay-answer" id="q23b" placeholder="اكتب إجابتك هنا..."></textarea>
+                    
+                    <button class="toggle-answer-btn" onclick="toggleModelAnswer('modelAnswer6')">عرض نموذج الإجابة</button>
+                    <div class="model-answer" id="modelAnswer6">
+                        <div class="model-answer-title">نموذج الإجابة:</div>
+                        <p><strong>أ- الجيولوجيا:</strong> بيئة مناسبة لدراسة العمليات الجيولوجية التي تسهم في تشكيل سطح الأرض ومرجعاً جيولوجياً لمعرفة أنواع الصخور التي يتكون منها باطن الأرض.</p>
+                        <p><strong>ب- البيئة:</strong> امتصاص ثاني أكسيد الكربون المسبب لظاهرة الاحتباس الحراري.</p>
+                    </div>
+                </div>
+                
+                <div class="question-part">
+                    <div class="question-part-title">2- وضع العلاقة بين أفيوليت سمائل والحركات التكتونية.</div>
+                    <textarea class="essay-answer" id="q24" placeholder="اكتب إجابتك هنا..."></textarea>
+                    <button class="toggle-answer-btn" onclick="toggleModelAnswer('modelAnswer7')">عرض نموذج الإجابة</button>
+                    <div class="model-answer" id="modelAnswer7">
+                        <div class="model-answer-title">نموذج الإجابة:</div>
+                        <p>الحركات التكتونية كانت سبباً في ظهور أفيوليت سمائل على سطح الأرض.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- الجزء الأول: ب. الصورة -->
+            <div class="question-card">
+                <div class="question-number">أولاً - ب</div>
+                <div class="question-text">مستعيناً بالصورة المقابلة، أجب عن الأسئلة الآتية:</div>
+                
+                <div class="image-container">
+                    <img src="https://i.postimg.cc/jjsBGmhj/1000001055.jpg" alt="صورة مدرسة قديمة" class="exam-image">
+                </div>
+                
+                <div class="question-part">
+                    <div class="question-part-title">1- ما اسم المدرسة الموضحة في الصورة؟</div>
+                    <input type="text" class="answer-input" id="q25" placeholder="أدخل اسم المدرسة هنا">
+                </div>
+                
+                <div class="question-part">
+                    <div class="question-part-title">2- اكتب واحدة لكل مما يأتي:</div>
+                    <p>(أ) أبرز العلوم التي تدرس فيها:</p>
+                    <input type="text" class="answer-input" id="q26a" placeholder="أدخل العلوم هنا">
+                    
+                    <p>(ب) بعض المرافق الملحقة بها:</p>
+                    <input type="text" class="answer-input" id="q26b" placeholder="أدخل المرافق هنا">
+                    
+                    <button class="toggle-answer-btn" onclick="toggleModelAnswer('modelAnswer8')">عرض نموذج الإجابة</button>
+                    <div class="model-answer" id="modelAnswer8">
+                        <div class="model-answer-title">نموذج الإجابة:</div>
+                        <p><strong>1- اسم المدرسة:</strong> مدرسة حصن جبرين القديمة</p>
+                        <p><strong>2- (أ) أبرز العلوم:</strong> الآداب/اللغة/الفقه/الحقوق/التاريخ/الفلك/الطب</p>
+                        <p><strong>2- (ب) المرافق الملحقة:</strong> سكناً للمعلمين/سكناً للطلبة/مسجداً/مكتبة</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- الجزء الثاني: تصنيف الأشجار -->
+            <div class="question-card">
+                <div class="question-number">ثانياً</div>
+                <div class="question-text">صنّف الأشجار بين القوسين حسب الإقليم الذي تنمو فيه بالجدول الآتي:</div>
+                <p style="text-align: center; margin: 15px 0; font-weight: bold; color: var(--main-gold);">(القرم – الغاف - العتم – الشمد – السرح – العلعلان)</p>
+                
+                <table class="exam-table">
+                    <thead>
+                        <tr>
+                            <th width="50%">الإقليم الجبلي</th>
+                            <th width="50%">الإقليم الساحلي</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" class="answer-input" id="q27a" placeholder="أدخل أسماء الأشجار هنا"></td>
+                            <td><input type="text" class="answer-input" id="q27b" placeholder="أدخل أسماء الأشجار هنا"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="toggle-answer-btn" onclick="toggleModelAnswer('modelAnswer9')">عرض نموذج الإجابة</button>
+                <div class="model-answer" id="modelAnswer9">
+                    <div class="model-answer-title">نموذج الإجابة:</div>
+                    <p><strong>الإقليم الجبلي:</strong> العتم-العلعلان</p>
+                    <p><strong>الإقليم الساحلي:</strong> القرم-الثرمد (الشمد)</p>
+                    <p><strong>الإقليم السهلي:</strong> الغاف-السرح</p>
+                </div>
+            </div>
+            
+            <!-- الجزء الثالث: جدول درجات الحرارة - المحدث -->
+            <div class="question-card">
+                <div class="question-number">ثالثاً</div>
+                <div class="question-text">ادرس جدول متوسط درجات الحرارة لعام 2018م جيداً. ثم أجب عن الأسئلة التي تليه:</div>
+                
+                <div class="table-container">
+                    <table class="exam-table">
+                        <thead>
+                            <tr>
+                                <th>المحطة</th>
+                                <th>متوسط درجة الحرارة(س) شتاء</th>
+                                <th>متوسط درجة الحرارة(س) صيفا</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>مطار مسقط الدولي</td><td>20.8</td><td>36.6</td></tr>
+                            <tr><td>نزوى</td><td>19.6</td><td>37.7</td></tr>
+                            <tr><td>ثمريت</td><td>17.4</td><td>29.1</td></tr>
+                            <tr><td>صحار</td><td>19.8</td><td>35.6</td></tr>
+                            <tr><td>خصب</td><td>19.2</td><td>35.5</td></tr>
+                            <tr><td>عبري</td><td>18.1</td><td>39.7</td></tr>
+                            <tr><td>صور</td><td>21.2</td><td>38.9</td></tr>
+                            <tr><td>الرستاق</td><td>18.7</td><td>39.2</td></tr>
+                            <tr><td>صلالة</td><td>25.1</td><td>26.3</td></tr>
+                            <tr><td>قيرون حيريتي</td><td>15.7</td><td>21.4</td></tr>
+                            <tr><td>سيق</td><td>10.8</td><td>27.3</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="question-part">
+                    <div class="question-part-title">1- ما المحطة التي سجلت أعلى درجة حرارة صيفاً؟</div>
+                    <input type="text" class="answer-input" id="q28" placeholder="أدخل اسم المحطة هنا">
+                </div>
+                
+                <div class="question-part">
+                    <div class="question-part-title">2- فسّر: انخفاض درجات الحرارة شتاءً بشكل ملحوظ في محطة سيق.</div>
+                    <textarea class="essay-answer" id="q29" placeholder="اكتب تفسيرك هنا..."></textarea>
+                </div>
+                
+                <div class="question-part">
+                    <div class="question-part-title">3- احسب الفرق بين متوسط درجات الحرارة السنوية في مدينة صلالة.</div>
+                    <input type="text" class="answer-input" id="q30" placeholder="أدخل الفرق هنا">
+                    
+                    <button class="toggle-answer-btn" onclick="toggleModelAnswer('modelAnswer10')">عرض نموذج الإجابة</button>
+                    <div class="model-answer" id="modelAnswer10">
+                        <div class="model-answer-title">نموذج الإجابة:</div>
+                        <p><strong>1- المحطة الأعلى حرارة صيفاً:</strong> عبري</p>
+                        <p><strong>2- تفسير انخفاض الحرارة في سيق:</strong> لأنها مناطق جبلية فساهم الارتفاع في انخفاض درجات الحرارة فيها.</p>
+                        <p><strong>3- حساب الفرق في صلالة:</strong> 26.3 - 25.1 = 1.2</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="navigation">
+                <button class="nav-btn" onclick="scrollToSection('question2')"><i class="fas fa-arrow-right"></i> السابق: السؤال الثاني</button>
+                <button class="nav-btn" onclick="scrollToSection('question4')">التالي: السؤال الرابع <i class="fas fa-arrow-left"></i></button>
+            </div>
+        </div>
+
+        <!-- السؤال الرابع: التقسيم الإداري والمقارنة -->
+        <div class="exam-section section-glow light-glow" id="question4">
+            <h2 class="section-title golden-text">السؤال الرابع: التقسيم الإداري والمقارنة <i class="fas fa-list-ol"></i></h2>
+            
+            <!-- الجزء الأول: أكمل المخطط -->
+            <div class="question-card">
+                <div class="question-number">أولاً</div>
+                <div class="question-text">أكمل المخطط الآتي:</div>
+                
+                <div style="text-align: center; margin: 20px 0; font-weight: bold; color: var(--main-gold); font-size: 1.3rem;">
+                    أمثلة للتقسيم الإداري لعمان في العصور الإسلامية
+                </div>
+                
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 20px; margin: 25px 0;">
+                    <div style="width: 100%; max-width: 700px;">
+                        <div style="background: rgba(212, 175, 55, 0.15); padding: 12px 20px; border-radius: 8px; margin-bottom: 8px; font-weight: bold; color: var(--main-gold);">
+                            أرض الجوف
+                        </div>
+                        <input type="text" class="answer-input" id="q31a" placeholder="أدخل المثال الأول">
+                    </div>
+                    
+                    <div style="width: 100%; max-width: 700px;">
+                        <div style="background: rgba(212, 175, 55, 0.15); padding: 12px 20px; border-radius: 8px; margin-bottom: 8px; font-weight: bold; color: var(--main-gold);">
+                            عبرى وما حولها
+                        </div>
+                        <input type="text" class="answer-input" id="q31b" placeholder="أدخل المثال الثاني">
+                    </div>
+                    
+                    <div style="width: 100%; max-width: 700px;">
+                        <div style="background: rgba(212, 175, 55, 0.15); padding: 12px 20px; border-radius: 8px; margin-bottom: 8px; font-weight: bold; color: var(--main-gold);">
+                            البريمي وما حولها
+                        </div>
+                        <input type="text" class="answer-input" id="q31c" placeholder="أدخل المثال الثالث">
+                    </div>
+                    
+                    <div style="width: 100%; max-width: 700px;">
+                        <div style="background: rgba(212, 175, 55, 0.15); padding: 12px 20px; border-radius: 8px; margin-bottom: 8px; font-weight: bold; color: var(--main-gold);">
+                            نزوى وما حولها
+                        </div>
+                        <input type="text" class="answer-input" id="q31d" placeholder="أدخل المثال الرابع">
+                    </div>
+                </div>
+                
+                <button class="toggle-answer-btn" onclick="toggleModelAnswer('modelAnswer11')">عرض نموذج الإجابة</button>
+                <div class="model-answer" id="modelAnswer11">
+                    <div class="model-answer-title">نموذج الإجابة:</div>
+                    <p>1. أرض الجوف</p>
+                    <p>2. عبرى وما حولها</p>
+                    <p>3. أرض الجو</p>
+                    <p>4. محافظة ظفار</p>
+                </div>
+            </div>
+            
+            <!-- الجزء الثاني: المقارنة -->
+            <div class="question-card">
+                <div class="question-number">ثانياً</div>
+                <div class="question-text">قارن بين الأخوار الدائمة والأخوار المؤقتة حسب المعطيات في الجدول الآتي:</div>
+                
+                <table class="exam-table">
+                    <thead>
+                        <tr>
+                            <th width="30%">المقارنة</th>
+                            <th width="35%">المفهوم</th>
+                            <th width="35%">أمثلة عليها</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-weight: bold; color: var(--main-gold);">الأخوار الدائمة</td>
+                            <td><input type="text" class="answer-input" id="q32a" placeholder="أدخل المفهوم"></td>
+                            <td><input type="text" class="answer-input" id="q32b" placeholder="أدخل الأمثلة"></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold; color: var(--main-gold);">الأخوار المؤقتة</td>
+                            <td><input type="text" class="answer-input" id="q32c" placeholder="أدخل المفهوم"></td>
+                            <td><input type="text" class="answer-input" id="q32d" placeholder="أدخل الأمثلة"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <button class="toggle-answer-btn" onclick="toggleModelAnswer('modelAnswer12')">عرض نموذج الإجابة</button>
+                <div class="model-answer" id="modelAnswer12">
+                    <div class="model-answer-title">نموذج الإجابة:</div>
+                    <p><strong>الأخوار الدائمة:</strong></p>
+                    <p><strong>المفهوم:</strong> الأخوار المفتوحة دائماً على البحر</p>
+                    <p><strong>أمثلة:</strong> جراماً شم/ المضبيل</p>
+                    <p><strong>الأخوار المؤقتة:</strong></p>
+                    <p><strong>المفهوم:</strong> تمثل مصبات الأودية التي تكسر الحاجز الرملي وتصل إلى البحر مما يؤدي إلى تدفق مياه المد خلالها</p>
+                    <p><strong>أمثلة:</strong> وادي الجزي/ السوادي/ ارزات</p>
+                </div>
+            </div>
+            
+            <!-- الجزء الثالث: ترتيب الأحداث -->
+            <div class="question-card">
+                <div class="question-number">ثالثاً</div>
+                <div class="question-text">رتب الأحداث الآتية بكتابة الأرقام (٤-٣-٢-١) حسب تسلسلها من الأقدم الى الأحدث:</div>
+                
+                <div style="margin: 25px 0;">
+                    <div class="comparison-row">
+                        <input type="number" min="1" max="4" id="order1" style="width: 60px; padding: 10px; margin-left: 15px; background: rgba(0,0,0,0.5); color: white; border: 1px solid var(--main-gold); border-radius: 6px; font-size: 1.1rem; text-align: center;">
+                        <div style="flex: 1;">تصدر صورة السلطان قابوس طيب الله تراثه المجتمع والدبلوماسية.</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <input type="number" min="1" max="4" id="order2" style="width: 60px; padding: 10px; margin-left: 15px; background: rgba(0,0,0,0.5); color: white; border: 1px solid var(--main-gold); border-radius: 6px; font-size: 1.1rem; text-align: center;">
+                        <div style="flex: 1;">افتتاح دار الأوبرا السلطانية.</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <input type="number" min="1" max="4" id="order3" style="width: 60px; padding: 10px; margin-left: 15px; background: rgba(0,0,0,0.5); color: white; border: 1px solid var(--main-gold); border-radius: 6px; font-size: 1.1rem; text-align: center;">
+                        <div style="flex: 1;">إدراج نور الدين السالمي ضمن الشخصيات المؤثرة عالمياً.</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <input type="number" min="1" max="4" id="order4" style="width: 60px; padding: 10px; margin-left: 15px; background: rgba(0,0,0,0.5); color: white; border: 1px solid var(--main-gold); border-radius: 6px; font-size: 1.1rem; text-align: center;">
+                        <div style="flex: 1;">تأسيس مركز ذاكرة عمان.</div>
+                    </div>
+                </div>
+                
+                <div class="hint-box">
+                    <div class="hint-title">ملاحظة:</div>
+                    <p>يجب ترتيب الأحداث من الأقدم (1) إلى الأحدث (4).</p>
+                </div>
+            </div>
+            
+            <div class="navigation">
+                <button class="nav-btn" onclick="scrollToSection('question3')"><i class="fas fa-arrow-right"></i> السابق: السؤال الثالث</button>
+                <button class="nav-btn" onclick="scrollToSection('question5')">التالي: السؤال الخامس <i class="fas fa-arrow-left"></i></button>
+            </div>
+        </div>
+
+        <!-- السؤال الخامس: الاكتشافات والخرائط -->
+        <div class="exam-section section-glow light-glow" id="question5">
+            <h2 class="section-title golden-text">السؤال الخامس: الاكتشافات والخرائط <i class="fas fa-search"></i></h2>
+            
+            <!-- الجزء الأول: دراسة الشكل -->
+            <div class="question-card">
+                <div class="question-number">أولاً</div>
+                <div class="question-text">ادرس الشكل الآتي جيداً، ثم أجب عن الأسئلة التي تليه:</div>
+                
+                <div class="image-container">
+                    <img src="https://i.postimg.cc/9Mv2510C/1000001058.jpg" alt="صورة اكتشافات أثرية" class="exam-image">
+                </div>
+                
+                <div class="question-part">
+                    <div class="question-part-title">1- سم الاكتشاف الذي تشير إليه الصورة:</div>
+                    <input type="text" class="answer-input" id="q33" placeholder="أدخل اسم الاكتشاف">
+                </div>
+                
+                <div class="question-part">
+                    <div class="question-part-title">2- ما الولاية التي عثر فيها على هذه المكتشفات؟</div>
+                    <input type="text" class="answer-input" id="q34" placeholder="أدخل اسم الولاية">
+                </div>
+                
+                <div class="question-part">
+                    <div class="question-part-title">3- وضع الدلالة الاقتصادية لوجود هذه المكتشفات في عمان خلال العصور الإسلامية:</div>
+                    <textarea class="essay-answer" id="q35" placeholder="اكتب إجابتك هنا..."></textarea>
+                    
+                    <button class="toggle-answer-btn" onclick="toggleModelAnswer('modelAnswer13')">عرض نموذج الإجابة</button>
+                    <div class="model-answer" id="modelAnswer13">
+                        <div class="model-answer-title">نموذج الإجابة:</div>
+                        <p><strong>1- الاكتشاف:</strong> المستويات النقدية القديمة</p>
+                        <p><strong>2- الولاية:</strong> ولاية صحار</p>
+                        <p><strong>3- الدلالة الاقتصادية:</strong> ازدهار النشاط الاقتصادي العماني في العصور الإسلامية</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- الجزء الثاني: التعليل -->
+            <div class="question-card">
+                <div class="question-number">ثانياً</div>
+                <div class="question-text">علل ما يأتي:</div>
+                
+                <div class="question-part">
+                    <div class="question-part-title">1- تأثر سلطنة عمان بالرياح الموسمية.</div>
+                    <textarea class="essay-answer" id="q36" placeholder="اكتب تعليلك هنا..."></textarea>
+                </div>
+                
+                <div class="question-part">
+                    <div class="question-part-title">2- اختيار مدينة نزوى عاصمة للثقافة الإسلامية لعام 2015م.</div>
+                    <textarea class="essay-answer" id="q37" placeholder="اكتب تعليلك هنا..."></textarea>
+                    
+                    <button class="toggle-answer-btn" onclick="toggleModelAnswer('modelAnswer14')">عرض نموذج الإجابة</button>
+                    <div class="model-answer" id="modelAnswer14">
+                        <div class="model-answer-title">نموذج الإجابة:</div>
+                        <p><strong>1- تأثر عمان بالرياح الموسمية:</strong> لامتدادها على مسطحات مائية طويلة/ تنوع تضاريسها بين الجبال والوديان والسهول (يكتفى بواحدة).</p>
+                        <p><strong>2- اختيار نزوى عاصمة الثقافة الإسلامية:</strong> نظراً لمكانة مدينة نزوى الثقافية.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- الجزء الثالث: أ. عدد اثنين -->
+            <div class="question-card">
+                <div class="question-number">ثالثاً - أ</div>
+                <div class="question-text">عدد اثنين لكل مما يأتي:</div>
+                
+                <div class="question-part">
+                    <div class="question-part-title">1- البضائع التي صدرها ميناء عمان في العصور القديمة كما جاء في كتاب (الطواف حول البحر الإريتري).</div>
+                    <textarea class="essay-answer" id="q38" placeholder="اكتب إجابتك هنا... (اذكر بضاعتين)"></textarea>
+                </div>
+                
+                <div class="question-part">
+                    <div class="question-part-title">2- النساء العمانيات اللاتي أسهمن في الحركة الثقافية في عمان خلال القرنين 14 و 15 الهجري.</div>
+                    <textarea class="essay-answer" id="q39" placeholder="اكتب إجابتك هنا... (اذكر اسمين)"></textarea>
+                    
+                    <button class="toggle-answer-btn" onclick="toggleModelAnswer('modelAnswer15')">عرض نموذج الإجابة</button>
+                    <div class="model-answer" id="modelAnswer15">
+                        <div class="model-answer-title">نموذج الإجابة:</div>
+                        <p><strong>1- البضائع المصدرة:</strong> قوارب تدعى مادارات/ الصوف الأرجواني/ الملايس/ الذهب (يكتفى بالاثنين).</p>
+                        <p><strong>2- النساء العمانيات:</strong> شمساء بنت سعيد الخليلية/ عاشقة بنت عيسى الحارثية/ فاطمة بنت ناصر الغيلانية (يكتفى بالاثنين).</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- الجزء الثالث: ب. التمييز -->
+            <div class="question-card">
+                <div class="question-number">ب</div>
+                <div class="question-text">ميز بين المشربيات والقمريات من حيث مادة الصنع:</div>
+                
+                <table class="exam-table">
+                    <thead>
+                        <tr>
+                            <th width="50%">المشربيات</th>
+                            <th width="50%">القمريات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" class="answer-input" id="q40a" placeholder="أدخل مادة صنع المشربيات"></td>
+                            <td><input type="text" class="answer-input" id="q40b" placeholder="أدخل مادة صنع القمريات"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <button class="toggle-answer-btn" onclick="toggleModelAnswer('modelAnswer16')">عرض نموذج الإجابة</button>
+                <div class="model-answer" id="modelAnswer16">
+                    <div class="model-answer-title">نموذج الإجابة:</div>
+                    <p><strong>المشربيات:</strong> الجص/الخشب الصلد (يكتفى بواحدة)</p>
+                    <p><strong>القمريات:</strong> الحجر/الرخام/الجص (يكتفى بواحدة)</p>
+                </div>
+            </div>
+            
+            <div class="control-buttons">
+                <button class="control-btn secondary" onclick="showResults()">
+                    <i class="fas fa-chart-bar"></i> تصحيح الإجابات وعرض النتيجة
+                </button>
+            </div>
+            
+            <div class="navigation">
+                <button class="nav-btn" onclick="scrollToSection('question4')"><i class="fas fa-arrow-right"></i> السابق: السؤال الرابع</button>
+                <button class="nav-btn" onclick="scrollToSection('results')">عرض النتائج <i class="fas fa-arrow-left"></i></button>
+            </div>
+        </div>
+
+        <!-- عرض النتائج -->
+        <div class="results-container" id="results">
+            <h2 class="results-title golden-text">نتيجة الامتحان <i class="fas fa-award"></i></h2>
+            
+            <div class="score-display" id="totalScore">0%</div>
+            
+            <div class="score-details">
+                <div class="score-item">
+                    <div class="score-label">الإجابات الصحيحة</div>
+                    <div class="score-value" id="correctCount">0</div>
+                </div>
+                
+                <div class="score-item">
+                    <div class="score-label">الإجابات الخاطئة</div>
+                    <div class="score-value" id="incorrectCount">0</div>
+                </div>
+                
+                <div class="score-item">
+                    <div class="score-label">الدرجة الكلية</div>
+                    <div class="score-value" id="totalPoints">0</div>
+                    <div class="score-label">من 100 درجة</div>
+                </div>
+            </div>
+            
+            <div style="margin: 30px 0; text-align: right;">
+                <h3 style="color: var(--main-gold); margin-bottom: 15px;">ملاحظات على أدائك:</h3>
+                <div id="performanceNotes" style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 10px; text-align: right;">
+                    <!-- سيتم ملء هذا القسم بالملاحظات تلقائياً -->
+                </div>
+            </div>
+            
+            <div class="control-buttons">
+                <button class="control-btn" onclick="resetExam()">
+                    <i class="fas fa-redo"></i> إعادة محاولة
+                </button>
+                <button class="control-btn secondary" onclick="scrollToSection('instructions')">
+                    <i class="fas fa-home"></i> العودة للبداية
+                </button>
+            </div>
+        </div>
+
+        <footer>
+            <div class="copyright">
+                <p class="golden-text">امتحان الدراسات الاجتماعية (هذا وطني) - الصف الحادي عشر - الدور الأول 2023/2024</p>
+                <p>تم إنشاء هذا الامتحان التفاعلي بناءً على وثائق الامتحان الحقيقية ونموذج الإجابة الرسمي</p>
+                <p>جميع الصور مستخدمة لأغراض تعليمية فقط</p>
+                <p style="margin-top: 15px;">تصميم وتطوير: نظام الاختبارات التفاعلية</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+    // إنشاء النجوم في الخلفية
+    function createStars() {
+        const starsContainer = document.getElementById('starsContainer');
+        const starCount = 150;
+        
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            
+            const size = Math.random() * 2;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            
+            star.style.animationDelay = `${Math.random() * 5}s`;
+            
+            starsContainer.appendChild(star);
+        }
+    }
+
+    // شريط التقدم
+    window.onscroll = function() {
+        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrolled = (winScroll / height) * 100;
+        
+        var progressBar = document.getElementById("progressBar");
+        progressBar.style.width = scrolled + "%";
+        
+        if (scrolled < 33) {
+            progressBar.style.background = "linear-gradient(90deg, var(--progress-start), var(--progress-middle))";
+        } else if (scrolled < 66) {
+            progressBar.style.background = "linear-gradient(90deg, var(--progress-middle), var(--progress-end))";
+        } else {
+            progressBar.style.background = "linear-gradient(90deg, var(--progress-end), var(--progress-start))";
+        }
+    };
+    
+    // التنقل بين الأقسام
+    function scrollToSection(sectionId) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+    
+    // إظهار/إخفاء قائمة الأسئلة
+    document.getElementById('menuToggle').addEventListener('click', function() {
+        const menu = document.getElementById('examMenu');
+        if (menu.style.display === 'none' || menu.style.display === '') {
+            menu.style.display = 'block';
+        } else {
+            menu.style.display = 'none';
+        }
+    });
+    
+    // إغلاق القائمة عند النقر خارجها
+    document.addEventListener('click', function(event) {
+        const menu = document.getElementById('examMenu');
+        const toggle = document.getElementById('menuToggle');
+        
+        if (!menu.contains(event.target) && !toggle.contains(event.target) && menu.style.display === 'block') {
+            menu.style.display = 'none';
+        }
+    });
+
+    // بدء الامتحان
+    function startExam() {
+        scrollToSection('question1');
+    }
+     
+    // دالة محدثة لتحديد خيار في أسئلة الاختيار من متعدد
+    function selectOption(element, questionId) {
+        // إيجاد البطاقة الأصلية للسؤال
+        const questionCard = element.closest('.question-card');
+        if (!questionCard) return;
+        
+        // إزالة التحديد من جميع الخيارات في نفس السؤال
+        const optionsContainer = questionCard.querySelector('.options-container');
+        const options = optionsContainer.querySelectorAll('.option');
+        
+        options.forEach(option => {
+            option.classList.remove('selected');
+        });
+        
+        // إضافة التحديد للخيار المختار
+        element.classList.add('selected');
+        
+        // الحصول على نص الإجابة المختارة
+        const selectedText = element.querySelector('.option-text').textContent.trim();
+        
+        // حفظ الإجابة في localStorage
+        localStorage.setItem(questionId, selectedText);
+    }
+
+    // الإجابات الصحيحة للأسئلة الموضوعية
+    const correctAnswers = {
+        // السؤال الأول: الاختيار من متعدد
+        q1: "ظفار",
+        q2: "الجدول به أخطاء",
+        q3: "حديقة الصخور",
+        q4: "السليل الطبيعية",
+        q5: "الطب",
+        q6: "الموسمي",
+        q7: "سيرة الجميع العملي، مصدر القيم والقوانين، رمز الوحدة الوطنية، تنظيم المجتمع والمشاركة",
+        q8: "الجفاف وقلة الأمطار",
+        q9: "72 مجلد",
+        q10: "المهرة",
+        q11: "مكتبة السيد محمد بن أحمد البوسعيدي (1972) → متحف التاريخ الطبيعي (1983) → مكتبة الجامعة (1986)",
+        q12: "المدارس",
+        
+        // السؤال الثاني: المصطلحات
+        q13: "الروضى",
+        q14: "السبخة",
+        q15: "العمل التطوعي",
+        q16: "المزاغل",
+        
+        // السؤال الثاني: النتائج
+        q17: "ارتفاع درجات الحرارة، سيادة الجفاف",
+        q18: "يشأ الفرد إيجابيا في تفاعله مع مجتمعه، قادرا على العطاء والمساهمة مما يساعد على تقوية روابط المجتمع والمساهمة في بناء الوطن",
+        
+        // السؤال الثاني: الأدلة
+        q19: "إبرام اتفاقية مع الملك سرجون الأكادي ملك سومر وأكاد لصد الأطماع الخارجية المحيطة بعمان",
+        q20: "أنشئت العديد من الجامعات والكليات والمعاهد المختلفة المنتشرة في محافظات السلطنة كافة",
+        
+        // السؤال الثاني: الخريطة
+        q21a: "3",
+        q21b: "2015",
+        q21c: "صحراء الحقف",
+        q22: "محافظة مسندم",
+        
+        // السؤال الثالث: النص
+        q23a: "بيئة مناسبة لدراسة العمليات الجيولوجية التي تسهم في تشكيل سطح الأرض ومرجعاً جيولوجياً لمعرفة أنواع الصخور التي يتكون منها باطن الأرض",
+        q23b: "امتصاص ثاني أكسيد الكربون المسبب لظاهرة الاحتباس الحراري",
+        q24: "الحركات التكتونية كانت سبباً في ظهور أفيوليت سمائل على سطح الأرض",
+        
+        // السؤال الثالث: الصورة
+        q25: "مدرسة حصن جبرين القديمة",
+        q26a: "الآداب/اللغة/الفقه/الحقوق/التاريخ/الفلك/الطب",
+        q26b: "سكناً للمعلمين/سكناً للطلبة/مسجداً/مكتبة",
+        
+        // السؤال الثالث: تصنيف الأشجار
+        q27a: "العتم-العلعلان",
+        q27b: "القرم-الثرمد",
+        
+        // السؤال الثالث: جدول الحرارة
+        q28: "عبري",
+        q29: "لأنها مناطق جبلية فساهم الارتفاع في انخفاض درجات الحرارة فيها",
+        q30: "1.2",
+        
+        // السؤال الرابع: التقسيم الإداري
+        q31a: "أرض الجوف",
+        q31b: "عبرى وما حولها",
+        q31c: "أرض الجو",
+        q31d: "محافظة ظفار",
+        
+        // السؤال الرابع: المقارنة
+        q32a: "الأخوار المفتوحة دائماً على البحر",
+        q32b: "جراماً شم/ المضبيل",
+        q32c: "تمثل مصبات الأودية التي تكسر الحاجز الرملي وتصل إلى البحر مما يؤدي إلى تدفق مياه المد خلالها",
+        q32d: "وادي الجزي/ السوادي/ ارزات",
+        
+        // السؤال الخامس: الاكتشافات
+        q33: "المستويات النقدية القديمة",
+        q34: "ولاية صحار",
+        q35: "ازدهار النشاط الاقتصادي العماني في العصور الإسلامية",
+        
+        // السؤال الخامس: التعليل
+        q36: "لامتدادها على مسطحات مائية طويلة/ تنوع تضاريسها بين الجبال والوديان والسهول",
+        q37: "نظراً لمكانة مدينة نزوى الثقافية",
+        
+        // السؤال الخامس: العدد
+        q38: "قوارب تدعى مادارات/ الصوف الأرجواني/ الملايس/ الذهب",
+        q39: "شمساء بنت سعيد الخليلية/ عاشقة بنت عيسى الحارثية/ فاطمة بنت ناصر الغيلانية",
+        
+        // السؤال الخامس: التمييز
+        q40a: "الجص/الخشب الصلد",
+        q40b: "الحجر/الرخام/الجص"
+    };
+    
+    // الكلمات المفتاحية للأسئلة المقالية
+    const keywords = {
+        q13: ["روضى", "سفن", "صلت", "بن", "مالك", "سقطرى"],
+        q14: ["سبخة", "ملحية", "منخفضة", "رواسب", "رملية", "طينية"],
+        q15: ["تطوع", "تطوعي", "مشاركة", "مجتمع", "مصلحة", "منفعة"],
+        q16: ["مزغل", "مزاغل", "حاجز", "أسوار", "أبراج", "فتحات", "نار"],
+        q17: ["ارتفاع", "درجات", "حرارة", "جفاف", "مدارية"],
+        q18: ["إيجابيا", "تفاعل", "مجتمعه", "عطاء", "مساهمة", "روابط", "مجتمع", "وطن"],
+        q19: ["اتفاقية", "سرجون", "أكادي", "سومر", "أكاد", "أطماع", "خارجية"],
+        q20: ["جامعات", "كليات", "معاهد", "مختلفة", "منتشرة", "محافظات", "سلطنة"],
+        q21a: ["3"],
+        q21b: ["2015"],
+        q21c: ["حقف", "صحراء", "الرمال"],
+        q22: ["مسندم"],
+        q23a: ["جيولوجية", "سطح", "أرض", "مرجع", "جيولوجي", "صخور", "باطن"],
+        q23b: ["امتصاص", "ثاني", "أكسيد", "كربون", "احتباس", "حراري"],
+        q24: ["حركات", "تكتونية", "سبب", "ظهور", "أفيوليت", "سمائل"],
+        q25: ["جبرين"],
+        q26a: ["آداب", "لغة", "فقه", "حقوق", "تاريخ", "فلك", "طب"],
+        q26b: ["سكن", "معلمين", "طلبة", "مسجد", "مكتبة"],
+        q27a: ["عتم", "علعلان"],
+        q27b: ["قرم", "ثرمد", "شمد"],
+        q28: ["عبري"],
+        q29: ["جبال", "ارتفاع", "انخفاض", "درجات", "حرارة"],
+        q30: ["1.2"],
+        q31a: ["جوف"],
+        q31b: ["عبرى"],
+        q31c: ["جو"],
+        q31d: ["ظفار"],
+        q32a: ["مفتوحة", "دائما", "بحر"],
+        q32b: ["جرام", "شم", "مضبيل"],
+        q32c: ["مصبات", "أودية", "حاجز", "رملي", "بحر", "مياه", "مد"],
+        q32d: ["جزي", "سوادي", "ارزات"],
+        q33: ["نقدية", "قديمة", "نقود"],
+        q34: ["صحار"],
+        q35: ["ازدهار", "اقتصادي", "عماني", "إسلامية"],
+        q36: ["مسطحات", "مائية", "تنوع", "تضاريس", "جبال", "وديان", "سهول"],
+        q37: ["مكانة", "نزوى", "ثقافية"],
+        q38: ["قوارب", "مادارات", "صوف", "أرجواني", "ملايس", "ذهب"],
+        q39: ["شمساء", "عاشقة", "فاطمة", "خليلية", "حارثية", "غيلانية"],
+        q40a: ["جص", "خشب", "صلد"],
+        q40b: ["حجر", "رخام", "جص"]
+    };
+    
+    // دالة جديدة للعثور على السؤال باستخدام رقمه
+    function findQuestionCard(questionNumber) {
+        const allQuestionCards = document.querySelectorAll('.question-card');
+        for (const card of allQuestionCards) {
+            const qNumElement = card.querySelector('.question-number');
+            if (qNumElement && qNumElement.textContent.trim() === questionNumber.toString()) {
+                return card;
+            }
+        }
+        return null;
+    }
+    
+    // دالة جديدة لتحمير الإجابات المحفوظة
+    function loadSavedAnswers() {
+        // تحمير إجابات الأسئلة الموضوعية
+        for (let i = 1; i <= 12; i++) {
+            const savedAnswer = localStorage.getItem(`q${i}`);
+            if (savedAnswer) {
+                const questionCard = findQuestionCard(i.toString());
+                if (questionCard) {
+                    const options = questionCard.querySelectorAll('.option');
+                    options.forEach(option => {
+                        const optionText = option.querySelector('.option-text').textContent.trim();
+                        if (optionText === savedAnswer) {
+                            option.classList.add('selected');
+                        }
+                    });
+                }
+            }
+        }
+        
+        // تحمير الإجابات المقالية
+        for (let i = 13; i <= 40; i++) {
+            const savedAnswer = localStorage.getItem(`q${i}`);
+            if (savedAnswer) {
+                const inputElement = document.getElementById(`q${i}`);
+                if (inputElement) {
+                    inputElement.value = savedAnswer;
+                }
+            }
+        }
+        
+        // تحمير ترتيب الأحداث
+        for (let i = 1; i <= 4; i++) {
+            const savedOrder = localStorage.getItem(`order${i}`);
+            if (savedOrder) {
+                const inputElement = document.getElementById(`order${i}`);
+                if (inputElement) {
+                    inputElement.value = savedOrder;
+                }
+            }
+        }
+    }
+     
+    // تصحيح الإجابات وعرض النتائج
+    function showResults() {
+        let correctCount = 0;
+        let totalQuestions = 0;
+        
+        // إزالة أي تصحيح سابق
+        document.querySelectorAll('.option').forEach(option => {
+            option.classList.remove('correct', 'incorrect');
+        });
+        
+        document.querySelectorAll('.answer-input, .essay-answer').forEach(input => {
+            input.classList.remove('correct', 'incorrect');
+        });
+        
+        // تصحيح الأسئلة الموضوعية (1-12)
+        for (let i = 1; i <= 12; i++) {
+            totalQuestions++;
+            const questionId = `q${i}`;
+            const savedAnswer = localStorage.getItem(questionId);
+            const correctAnswer = correctAnswers[questionId];
+            
+            if (savedAnswer && savedAnswer === correctAnswer) {
+                correctCount++;
+                // تلوين الإجابة الصحيحة
+                const allOptions = document.querySelectorAll('.option');
+                allOptions.forEach(option => {
+                    const optionText = option.querySelector('.option-text').textContent.trim();
+                    if (optionText === savedAnswer) {
+                        option.classList.add('correct');
+                    }
+                });
+            } else if (savedAnswer) {
+                // تلوين الإجابة الخاطئة والإجابة الصحيحة
+                const allOptions = document.querySelectorAll('.option');
+                allOptions.forEach(option => {
+                    const optionText = option.querySelector('.option-text').textContent.trim();
+                    if (optionText === savedAnswer) {
+                        option.classList.add('incorrect');
+                    }
+                    if (optionText === correctAnswer) {
+                        option.classList.add('correct');
+                    }
+                });
+            }
+        }
+        
+        // تصحيح الأسئلة المقالية (13-40)
+        for (let i = 13; i <= 40; i++) {
+            const questionId = `q${i}`;
+            const inputElement = document.getElementById(questionId);
+            
+            if (inputElement) {
+                totalQuestions++;
+                const userAnswer = inputElement.value.trim().toLowerCase();
+                const correctAnswer = correctAnswers[questionId] ? correctAnswers[questionId].toLowerCase() : "";
+                
+                if (keywords[questionId]) {
+                    let keywordFound = false;
+                    const userWords = userAnswer.split(/[\s,،.]+/);
+                    
+                    for (const keyword of keywords[questionId]) {
+                        if (userAnswer.includes(keyword.toLowerCase()) || 
+                            userWords.some(word => word === keyword.toLowerCase())) {
+                            keywordFound = true;
+                            break;
+                        }
+                    }
+                    
+                    if (keywordFound) {
+                        correctCount++;
+                        inputElement.classList.add('correct');
+                    } else if (correctAnswer && userAnswer === correctAnswer) {
+                        correctCount++;
+                        inputElement.classList.add('correct');
+                    } else if (userAnswer !== "") {
+                        inputElement.classList.add('incorrect');
+                    }
+                } else if (correctAnswer && userAnswer === correctAnswer) {
+                    correctCount++;
+                    inputElement.classList.add('correct');
+                } else if (userAnswer !== "") {
+                    inputElement.classList.add('incorrect');
+                }
+            }
+        }
+        
+        // تصحيح ترتيب الأحداث
+        const orderInputs = document.querySelectorAll('.comparison-row input[type="number"]');
+        const correctOrder = [1, 2, 3, 4];
+        
+        orderInputs.forEach((input, index) => {
+            totalQuestions++;
+            if (parseInt(input.value) === correctOrder[index]) {
+                correctCount++;
+                input.style.borderColor = "var(--correct-color)";
+                input.style.background = "rgba(46, 139, 87, 0.1)";
+            } else if (input.value !== "") {
+                input.style.borderColor = "var(--incorrect-color)";
+                input.style.background = "rgba(139, 0, 0, 0.1)";
+            }
+        });
+        
+        // حساب النتيجة
+        const scorePercentage = Math.round((correctCount / totalQuestions) * 100);
+        const totalPoints = Math.round((correctCount / totalQuestions) * 100);
+        
+        // عرض النتائج
+        document.getElementById('totalScore').textContent = `${scorePercentage}%`;
+        document.getElementById('correctCount').textContent = correctCount;
+        document.getElementById('incorrectCount').textContent = totalQuestions - correctCount;
+        document.getElementById('totalPoints').textContent = totalPoints;
+        
+        // إضافة ملاحظات الأداء
+        const performanceNotes = document.getElementById('performanceNotes');
+        let notes = "";
+        
+        if (scorePercentage >= 90) {
+            notes = "<p>ممتاز! أداء رائع، لديك فهم ممتاز لمادة الدراسات الاجتماعية.</p>";
+        } else if (scorePercentage >= 80) {
+            notes = "<p>جيد جداً! أداء قوي، لكن يمكنك التركيز أكثر على بعض النقاط.</p>";
+        } else if (scorePercentage >= 70) {
+            notes = "<p>جيد! تحتاج إلى مراجعة بعض الدروس لتحسين أدائك.</p>";
+        } else if (scorePercentage >= 60) {
+            notes = "<p>مقبول! يجب أن تراجع المادة بشكل أعمق.</p>";
+        } else {
+            notes = "<p>ضعيف! تحتاج إلى دراسة شاملة للمادة.</p>";
+        }
+        
+        notes += `<p>لقد أجبت بشكل صحيح على ${correctCount} من أصل ${totalQuestions} سؤالاً.</p>`;
+        notes += `<p>ننصحك بمراجعة الأسئلة التي ظهرت باللون الأحمر (الإجابات الخاطئة).</p>`;
+        notes += `<p>يمكنك عرض نموذج الإجابة للأسئلة المقالية بالضغط على الأزرار المخصصة لذلك.</p>`;
+        
+        performanceNotes.innerHTML = notes;
+        
+        // إظهار قسم النتائج
+        document.getElementById('results').style.display = 'block';
+        scrollToSection('results');
+    }
+    
+    // إعادة تعيين الامتحان
+    function resetExam() {
+        if (confirm("هل تريد إعادة الامتحان من البداية؟ سيتم مسح جميع إجاباتك.")) {
+            // مسح جميع التحديدات
+            document.querySelectorAll('.option').forEach(option => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+            });
+            
+            // مسح جميع الإدخالات
+            document.querySelectorAll('.answer-input').forEach(input => {
+                input.value = '';
+                input.classList.remove('correct', 'incorrect');
+            });
+            
+            // مسح جميع إجابات المقالية
+            document.querySelectorAll('.essay-answer').forEach(textarea => {
+                textarea.value = '';
+            });
+            
+            // مسح إجابات ترتيب الأحداث
+            document.querySelectorAll('.comparison-row input[type="number"]').forEach(input => {
+                input.value = '';
+                input.style.borderColor = '';
+                input.style.background = '';
+            });
+            
+            // إخفاء جميع نماذج الإجابة
+            document.querySelectorAll('.model-answer').forEach(answer => {
+                answer.style.display = 'none';
+            });
+            
+            // إخفاء النتائج
+            document.getElementById('results').style.display = 'none';
+            
+            // مسح التخزين المحلي
+            localStorage.clear();
+            
+            // العودة للبداية
+            scrollToSection('instructions');
+        }
+    }
+    
+    // تبديل عرض نموذج الإجابة
+    function toggleModelAnswer(answerId) {
+        const answerElement = document.getElementById(answerId);
+        if (answerElement) {
+            if (answerElement.style.display === 'none' || answerElement.style.display === '') {
+                answerElement.style.display = 'block';
+            } else {
+                answerElement.style.display = 'none';
+            }
+        }
+    }
+    
+    // تهيئة الصفحة عند التحميل
+    window.addEventListener('load', function() {
+        // إنشاء النجوم في الخلفية
+        createStars();
+        
+        // تحمير الإجابات المحفوظة
+        loadSavedAnswers();
+        
+        // حفظ الإجابات تلقائياً عند التغيير
+        document.querySelectorAll('.answer-input, .essay-answer').forEach(input => {
+            input.addEventListener('input', function() {
+                localStorage.setItem(this.id, this.value);
+            });
+        });
+        
+        // حفظ ترتيب الأحداث عند التغيير
+        document.querySelectorAll('.comparison-row input[type="number"]').forEach(input => {
+            input.addEventListener('change', function() {
+                localStorage.setItem(this.id, this.value);
+            });
+        });
+        
+        // إضافة مستمعي الأحداث للأزرار التي تعرض نماذج الإجابة
+        document.querySelectorAll('.toggle-answer-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const onclickAttr = this.getAttribute('onclick');
+                if (onclickAttr) {
+                    const match = onclickAttr.match(/toggleModelAnswer\('([^']+)'\)/);
+                    if (match && match[1]) {
+                        toggleModelAnswer(match[1]);
+                    }
+                }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
